@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListCtrl">
+    <head>
+        <meta charset="utf-8">
+        <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="js/controllers.js"></script>
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    Search: <input ng-model="query"/>
+                    Order by:<select ng-model="order">
+                        <option value="name">Alpha</option>
+                        <option value="age">Recent</option>
+                    </select>
+                </div>
+                <div class="col-md-10"> 
+                    <ul class="phones">
+                        <li ng-repeat="phone in phones | filter:query | orderBy:order">
+                            <span>{{phone.name}}</span>
+                            <p>{{phone.snippet}}</p>
+                            <span>{{phone.age}}</span>
+
+                        </li>
+                    </ul>
+                    <button ng-click="{{test()}}" >Ok</button>
+                </div>
+                <p> Total number of phones: {{phones.length}}</p>
+                <p> Hello {{name}}!</p>
+                <table>
+                    <tr><th>Row number</th></tr>
+                    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6]">
+                        <td>{{i}}</td>
+                    </tr>
+                </table>
+              
+            </div>
+        </div>
+    </body>
+</html>
